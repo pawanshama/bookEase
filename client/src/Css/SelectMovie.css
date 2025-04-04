@@ -1,0 +1,15 @@
+.SM_heading-movie{
+    width:100%;
+    font-size: 22px;
+    /* margin-left:14rem; */
+    color: black;
+}
+.SM_main_container-movie{
+    display:flex;
+    /* white-space: nowrap; */
+    /* justify-content: flex-start; */
+    /* flex-wrap: wrap; */
+    margin-bottom: 20px;
+    margin-left: 4rem;
+    color: black;
+}

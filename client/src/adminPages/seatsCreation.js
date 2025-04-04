@@ -1,0 +1,108 @@
+import React, { useContext, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import BsCxt from '../context/Bscontext';
+let r = '@';
+let t=0;
+const SeatsCreation = () => {
+  const [q,setQ] = useState('');
+  const context = useContext(BsCxt)
+  const {rowNums,setRowNums} = context
+  const [row,setRow] = useState('');
+  const navigate = useNavigate();
+    // console.log('a'.charCodeAt(0));
+    // console.log(String.fromCharCode(67));
+
+    //seats creation horizontally
+    const handleHorizontalSeat = () => {
+         setRow(prev=>[
+            ...prev,q
+         ])
+    }
+
+    //seats creation vertically
+    const handleVerticalSeat = () => {
+        // setRowNums(rl=>([...rl,row]))
+        r = String.fromCharCode(r.charCodeAt(0) + 1);
+        setRowNums(rl=>({...rl,[r]:row}))
+        setRow('');
+        console.log(rowNums);
+    }
+    
+    useEffect(()=>{
+      console.log(rowNums)
+    },[rowNums])
+
+    //handling delete rows
+    const handleCancel=(e)=>{
+      console.log(e.target)
+      const ind = parseInt(e.target.getAttribute('name'));
+      setRow((prev)=>{
+           const data = prev.filter((item,id)=>id !== ind);
+           return data;
+      })
+    }
+
+    //enabling full view of rowNums
+    const handleCare=()=>{
+      setRow('');
+      if(t===1){
+        t=0
+      }
+      else{
+        t=1;
+      }
+      console.log(t);
+    }
+    
+    //handle request when rows are complete
+    const handleDoneRequest=()=>{
+      navigate('/newMovie..')
+    }
+
+
+// console.log('t->',t);
+  return (
+    <div>
+         <div style={{width:'auto',marginTop:'2rem',marginLeft:'3rem',borderRadius:'12px',color:'black'}}>
+            Increase horizontal seats:
+            <input  placeholder='enter price of single horizontal row..' value={q} onChange={(e)=>setQ(e.target.value)}/>
+            <button onClick={handleHorizontalSeat} style={{backgroundColor:'green'}}> Enter </button>
+            <div style={{backgroundColor:'rgb(231, 230, 224)',display:'flex'}}>
+                {
+                  row && row.map((el,index)=>{
+                    return (<div key={index} style={{marginLeft:'1rem',backgroundColor:'red',}}>{String.fromCharCode(r.charCodeAt(0) + 1)}:{el}
+                       <div key={index} style={{fontSize:'small',position:'fixed',cursor:'pointer'}} name={index} onClick={handleCancel}>❌</div>
+                    </div>)
+                  })
+                }
+            </div>
+         </div>
+         <div style={{width:'auto',marginTop:'2rem',marginLeft:'3rem',borderRadius:'12px',color:'black'}}>
+           <button onClick={handleVerticalSeat} style={{backgroundColor:'green',marginBottom:'1rem'}}>Increase vertical seats</button>  
+         </div>
+         <button onClick={handleCare}>Click to activate view</button>
+         <button onClick={handleCare}>Click to deactivate view</button>
+         <div style={{marginTop:'2rem',display:`${t===0?'none':'flex'}`,flexDirection:'column'}}>
+         {
+           (t>0) && Object.keys(rowNums).map((key)=>{
+             return (
+            <div key={key} style={{marginTop:'12px',display:'flex',flexDirection:'row'}}>
+              {key}:
+              {
+               rowNums[key].length>0 && rowNums[key].map((c,ind)=>{
+                  return(
+                    <div key={ind} style={{marginLeft:'1rem'}}>{c}</div>
+                  )
+                })
+              }
+            </div>
+            )
+          })
+        }
+        </div>
+        <button style={{ marginTop:'1rem',marginLeft:'2rem'}} onClick={handleDoneRequest}> Done </button>
+    </div>
+  )
+}
+
+export default SeatsCreation
