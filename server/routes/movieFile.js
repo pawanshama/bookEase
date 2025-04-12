@@ -7,35 +7,27 @@ const multer  = require('multer')
 const path = require('path')
 const mongoose = require('mongoose')
 const boolAdmin = require('../middleware/checkAuthor.js')
-// const upload = multer({ dest: './uploads' })
-//this below code is a middleware code named multer used to store files and images at desired location
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, './uploads')
     },
     filename: function (req, file, cb) {
       const uniqueSuffix = Date.now()
-    //   console.log(file.originalname)
-    //   + '-' + Math.round(Math.random() * 1E9)
       cb(null,uniqueSuffix + '-' + file.originalname)
     }
 })
 const upload = multer({storage})
-// app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 app.post('/adminPost',ensureAuthenticated,upload.single('image'),async(req,res)=>{
     try{
-        console.log(req.body)
-        console.log(req.file.originalname)
         const {email,movieName,description,ratings,genre,theatre,location,city,startDate,endDate,seats} = req.body;
         const seat = JSON.parse(seats);
-        console.log(typeof seat);
-        // console.log(req.body.slots.includes(','))
-        // console.log(req.body.slots.split(','))
         
         const slots = req.body.slots.split(',');
         const image = req.file;
         const queryArray = []
+        if(email==='' || movieName===''||description==='' || ratings==='' || genre ==='' || theatre=== '' || location=== '' ||
+        city === '' || startDate === '' || endDate=== '' || slots.length===0 || Object.keys(seats).length===0)return res.status(400).json({message:"Please send correct input."})
         if(email) queryArray.push({email:{$regex:email,$options:'i'}})
         if(movieName)queryArray.push({movieName:{$regex:movieName,$options:'i'}})
 
@@ -45,23 +37,6 @@ app.post('/adminPost',ensureAuthenticated,upload.single('image'),async(req,res)=
             return res.status(409).json({message:"Admin already have this kind of movie"
             })
         }
-        
-        // queryArray.push({description:{$regex:description,$options:'i'}})
-        // queryArray.push({ratings:{$regex:ratings,$options:'i'}})
-        // queryArray.push({genre:{$regex:genre,$options:'i'}})
-        // queryArray.push({theatre:{$regex:theatre,$options:'i'}})
-        // queryArray.push({location:{$regex:location,$options:'i'}})
-        // queryArray.push({city:{$regex:city,$options:'i'}})
-        // queryArray.push({startDate:{$regex:startDate,$options:'i'}})
-        // queryArray.push({endDate:{$regex:endDate,$options:'i'}})
-
-        // const dr = await CompleteSchema.findOne({$and:queryArray});
-
-        // console.log('error below dr');
-        // if(dr){
-        //     return res.status(409).json({message:"Admin already have this kind of movie"
-        //     })
-        // }
         
         const loc = location.toLowerCase();
         const c = city.toLowerCase();
@@ -75,10 +50,10 @@ app.post('/adminPost',ensureAuthenticated,upload.single('image'),async(req,res)=
             ds = new movieSchema({email,movieName,location:loc,city:c,description,genre,ratings,imageId:{destination:image.destination,
                 filename:image.filename}});
             await ds.save();
-           return res.status(201).json({message:"success",ds,data});
+           return res.status(201).json({message:"success! movie submitted",ds,data});
         }
         else{
-           return res.status(200).json({message:'movie inserted',data});
+           return res.status(200).json({message:'movie Already Inserted',data});
         }
     }catch(err){
         return res.status(500).json({message:`something went wrong movie not fetched`,err})
@@ -101,26 +76,38 @@ app.get('/img/:id',ensureAuthenticated,async(req, res)=> {
         }
         // console.log(data.imageId.filename)
         const imageFile = path.resolve(__dirname ,'../uploads', data.imageId.filename)
-       res.status(200).sendFile(imageFile)
+       return res.status(200).sendFile(imageFile)
     }catch(err){
         return res.status(500).json({message:'error occured',err})
     }
 })
 app.get('/theatre',ensureAuthenticated,async(req, res)=> {
+ 
+    console.log(req.query)
+    const {movieName,city} = req.query;
+    console.log(movieName.length)
     try{
-        console.log(req.query)
-        const {movieName,city} = req.query;
-        const queryArray = []
-        if(city) queryArray.push({city:{$regex:city,$options:'i'}})
-        if(movieName) queryArray.push({movieName:{$regex:movieName,$options:'i'}})
-        const data = await CompleteSchema.find({$and:queryArray});
-        // console.log(req.params)
-        if(data.length===0){
-            res.status(404).json("not found any element")
-            return;
+
+        if (!city || !movieName) {
+            return res.status(400).json({ message: `Please send correct query.` });
         }
-        res.status(200).json({message:"success",data});
-        return;
+        
+        const queryArray = [
+            { city: { $regex: `^${city}$`, $options: 'i' } },
+            { movieName: { $regex: `^${movieName}$`, $options: 'i' } }
+        ];
+        console.log(queryArray)
+        
+        const data = await CompleteSchema.find({$and:queryArray});
+            // console.log(data[0])
+        // data.forEach(item=>{
+        //     console.log(item.movieName.length)
+        // })
+        
+        if(data.length===0){
+            return res.status(404).json({message:"not found any element"})
+        }
+        return res.status(200).json({message:"here is your cinemas",data});
     }catch(err){
         return res.status(500).json({message:'error occured',err})
     }

@@ -3,16 +3,17 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import BsCxt from '../context/Bscontext'
 const CardMovie = (props) => {
-    const title = props.text.movieName
-    const rat = props.text.ratings
-    const id = props.text._id
+    const [title,setTitle] = useState(props.text.movieName)
+    const [rat,setRat] = useState(props.text.ratings)
+    const [id,setId] = useState(props.text._id)
     const context = useContext(BsCxt)
-    const {setMovieName,token,setUrl} = context
+    const {setMovieName,token,setUrl,setMessage} = context
     const [urlt,setUrlt] = useState('');
     const navigate = useNavigate()
     const handleIndividualCard=()=>{
         setMovieName(title)
         setUrl(urlt)
+        
         navigate(`/home/cardmovie`)
     }
 
@@ -32,7 +33,7 @@ const CardMovie = (props) => {
           const dat = URL.createObjectURL(blob);
           setUrlt(dat);
         })
-        .catch(err=>console.log(err));
+        .catch(err=>setMessage(err.message));
         // console.log(data);
       }
       // t=0;

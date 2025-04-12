@@ -3,17 +3,32 @@ import BlockCard from './blockCard'
 import BsCxt from "../context/Bscontext"
 import { useNavigate } from 'react-router-dom';
 import '../Css/blockCard.css'
-let t=0;
+import Design from '../components/design';
+
 const Admin = () => {
     const [q,setQ] = useState(); 
     const [movieL,setMovieL] = useState([]); 
-    const [moviebundle,setMoviebundle] = useState(''); 
-    const [m,setM] = useState(''); 
+    const [moviebundle,setMoviebundle] = useState('');
+    const [m,setM] = useState('');
     const context = useContext(BsCxt);
-    const {email,country,token,adminBigList,setAdminBigList} = context
-    // const rst= ['tenet','pushpa','ra1','bahubali'];
+    const [t,setT]=useState(0);
+    const {email,country,token,setAdminBigList,message,setMessage} = context;
+    
+
+    // if(adminBigList.length>0 && t===0 ){
+    //   setT(2);
+    //   setM('');
+    //   setMovieL([]);
+    //   adminBigList.forEach(item => {
+    //     setM(prev=>([...prev,item.movieName]))
+    //   })
+    //   adminBigList.forEach(item => {
+    //     setMovieL(prev=>([...prev,item.movieName]))
+    //   })
+    // }
+    // console.log(adminBigList.length)
+    
     if( movieL.length===0 && token && email && t===0){
-      // setMovieL(rst);
       const handle = async() => {
         try{
 
@@ -27,9 +42,9 @@ const Admin = () => {
           })
         const res = await ds.json();
         // setMoviebundle(res.data);
-        console.log(res.data)
+        // console.log(res.data)
         setAdminBigList(res.data);
-        console.log(adminBigList);
+        // console.log(adminBigList);
         res.data.forEach(item => {
           setM(prev=>([...prev,item.movieName]))
         })
@@ -37,18 +52,16 @@ const Admin = () => {
           setMovieL(prev=>([...prev,item.movieName]))
         })
         
-        t=1;
+        setT(1)
+        setMessage(res.message)
       }catch(err){
+        setMessage(err.message)
         console.log("error occured",err)
       }
     }
     handle();
-    t=2;
   }
-  // useEffect(() => {
-  //   console.log("Updated adminBigList:", adminBigList);
-  // }, [adminBigList]);
-  // console.log(movieL.length)
+
     
     //handle search query
     const handleQuerySearch=(e)=>{
@@ -75,19 +88,29 @@ const Admin = () => {
   return (
     <div>
        <div className='nav-section'>
-         <div className='logo-section'>🎬logo</div>
+         <div className='logo-section'>🎬mOvEi</div>
          <input placeholder='search movie...' className='input-section' value={q} onChange={handleQuerySearch}/>
          <div className='location-section'>{country}</div>
          <div className='choose-location'>🛖</div>
          <div style={{marginTop:'1rem', marginLeft:'3rem',backgroundColor:'greenyellow',color:'black',padding:'3px',width:'auto',height:'auto',borderRadius:'10px',fontSize:'x-large',cursor:'pointer'}} onClick={handleCreateNewMovie}>+ Add new Movie</div>
+         <div  >Logout</div>
        </div>
        <br/>
+       {
+        message!==''?
+        <div></div>:
+        <div>{message}</div>
+       }
        <div style={{width:'100%',height:'1px',backgroundColor:'black'}}></div>
        <div >
           {
            (movieL) ? movieL.map((el,index)=>{
-               return ( <BlockCard key={index} name = {el} block = {moviebundle}/>
-            )}):(<div style={{fontSize:'xx-large',marginLeft:'3rem'}}>No movies Listed Here</div>)
+               return ( <BlockCard key={index} name = {el} block = {setT} slock={setMovieL}/>
+            )}):(<>
+                    <div style={{fontSize:'xx-large',marginLeft:'3rem'}}>No movies Listed Here</div>
+                    <Design word='go back'/>
+                 </>
+                )
           }
        </div>   
     </div>

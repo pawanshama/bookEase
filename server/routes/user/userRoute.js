@@ -13,7 +13,8 @@ const JWT_SECRET = process.env.JWT_SECRET;
 app.post('/signUp', async(req, res) => {
   try {
     const responsibility = false;
-    const { name,email, password, country, } = req.body;
+    const { name,email, password, country } = req.body;
+    if(country.toLowerCase()!=='india' )return res.status(422).json({message:'Country not Exist.'})
     const volunteer = await userSchema.findOne({ name,email, password, country});
     if (volunteer) {
         return res.status(400).json({ success: false, message: 'User already exists' });

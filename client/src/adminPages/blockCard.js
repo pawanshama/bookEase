@@ -1,13 +1,14 @@
 import React,{useContext, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import BsCxt from '../context/Bscontext'
+import '../Css/blk.css'
 
 const BlockCard = (props) => {
-    const {name,block} = props
+    const {name,block,slock} = props
     const context = useContext(BsCxt);
-    const {email,setMovieName} = context
+    const {email,setMovieName,setMessage,message} = context
     const navigate=useNavigate()
-    // console.log(name)
+   
     // const [q,setQ]=useState();
 
     //handling search query
@@ -26,11 +27,20 @@ const BlockCard = (props) => {
         const handleDelete = () => {
       const value = prompt('confirm delete',`${name}`)
        const fireEvent = async()=>{
-         const data = await fetch(`http://localhost:8000/movie/delete?email=${email}&movieName=${name}`,{
-           method:'Delete',
-          })
-         const response =await data.json();
-         console.log(response);
+          try{
+
+            const data = await fetch(`http://localhost:8000/movie/delete?email=${email}&movieName=${name}`,{
+              method:'Delete',
+            })
+            const response =await data.json();
+            setMessage(response.message)
+            block(0);
+            slock([]);
+            //  console.log(response);
+          }
+          catch(err){
+            setMessage(err.message)
+          }
         }
         // console.log(name)
         if(value === name){
@@ -42,7 +52,7 @@ const BlockCard = (props) => {
   return (
     <>
         <div style={{width:'80%',height:'3rem',marginLeft:'3rem',color:'black',display:'flex',flexDirection:'row',backgroundColor:'green',borderRadius:'12px',marginBottom:'1rem'}}>
-            <div style={{marginTop:'0.5rem',backgroundColor:'red',marginLeft:'1rem',borderRadius:'0.7rem',width:'auto',height:'1.5rem',paddingLeft:'10px',paddingRight:'10px'}}>{name}</div>
+            <div className='responsive-box'>{name}</div>
             <div style={{width:'2rem',height:'2rem',display:'flex',
               flexDirection:'column',marginLeft:'3rem',
               cursor:'pointer',backgroundColor:'green'}} onClick={handleDeletePlusEdit}>

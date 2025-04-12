@@ -1,13 +1,7 @@
-*{
-    padding:0;
-    margin:0;
-    box-sizing: border-box;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-.nav-section{
+/* .nav-section{
     display: flex;
     flex-direction: row;
-    /* background-color: whitesmoke; */
+    
     color: black;
     font-size: medium;
     font-family: 'Times New Roman', Times, serif;
@@ -46,54 +40,141 @@
 }
 .container{
     width:100%;
-    /* margin:30px auto; */
+   
 
     padding:30px 30px 0px 30px;
     background-color: #f0eaea;
-    /* border: 1px solid black; */
+   
+    border-radius: 5px;
+    color: #fff;
+    margin-bottom: 2rem;
+} */
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/* Base Styles (for desktops and laptops) */
+.nav-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    color: black;
+    font-size: medium;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 0.7rem;
+}
+
+.logo-section {
+    font-family: 'Times New Roman', Times, serif;
+    margin-left: 3rem;
+    font-size: xx-large;
+    font-weight: 600;
+    color: rgb(226, 165, 165);
+    margin-right: 6rem;
+}
+
+.input-section {
+    width: 20rem;
+    height: 1.7rem;
+    border-radius: 4px;
+    color: black;
+    margin-top: 1rem;
+    margin-right: 20rem;
+    padding: 0 10px;
+}
+
+.location-section {
+    color: black;
+    font-size: xx-large;
+    margin-top: 0.2rem;
+    margin-left: 0.3rem;
+    cursor: pointer;
+}
+
+.choose-location {
+    color: rgb(146, 131, 131);
+    font-size: large;
+    margin-top: 0.2rem;
+    margin-left: 0.3rem;
+    cursor: pointer;
+}
+
+.container {
+    width: 100%;
+    padding: 30px 30px 0px 30px;
+    background-color: #f0eaea;
     border-radius: 5px;
     color: #fff;
     margin-bottom: 2rem;
 }
-/* .select_movie_contanier{
-    flex-grow:1;
+
+/* Medium Screens: Tablets */
+@media (max-width: 1024px) {
+    .nav-section {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .logo-section {
+        font-size: x-large;
+        margin-left: 1rem;
+        margin-right: 2rem;
+    }
+
+    .input-section {
+        width: 16rem;
+        margin-right: 5rem;
+    }
+
+    .location-section, .choose-location {
+        font-size: large;
+    }
 }
-.BN-btn{
-    display: block;
-    padding:10px;
-    border:none;
-    margin-top: 40px;
-    left:10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 25px;;
-    font-weight: bold;
-    color: rgb(5,5,5);
-    background-color: rgb(238,239,241);
-    border: 2px solid rgb(10,10,10);
-    margin-bottom: 10px;
-    position: relative;
+
+/* Small Screens: Mobile Devices */
+@media (max-width: 768px) {
+    .nav-section {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+    }
+
+    .logo-section {
+        margin: 0 0 1rem 0;
+        font-size: x-large;
+    }
+
+    .input-section {
+        width: 100%;
+        margin: 0 0 1rem 0;
+    }
+
+    .location-section, .choose-location {
+        font-size: medium;
+    }
 }
-.BN-btn:hover{
-    background-color: rgba(255,0,55,0.664);
-    color: #fff;
+
+/* Extra Small Screens: Phones */
+@media (max-width: 480px) {
+    .logo-section {
+        font-size: large;
+    }
+
+    .input-section {
+        height: 1.5rem;
+    }
+
+    .location-section, .choose-location {
+        font-size: small;
+    }
+
+    .container {
+        padding: 20px 15px 0 15px;
+    }
 }
-.wrapper{
-    display:flex;
-    flex-grow: 0;
-    overflow: visible;
-    color:black;
-}
-.search{
-    display: flex;
-    width:90%;
-    height:2.5rem;
-}
-.search .s{
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 0%;
-}
-.s .su{
-    margin-top: 2px;
-} */

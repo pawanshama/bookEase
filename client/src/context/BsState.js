@@ -6,25 +6,26 @@ const BsState = (props)=>{
     const [token,setToken] = useState('');
     const [country,setCountry] = useState('');
     const [movieName,setMovieName] = useState('');
+    const [listMovieDown,setListMovieDown]=useState(null); //this is used in home for storing movies coming from backend
     const [adminBigList,setAdminBigList] = useState([]);
     const [changeform,setChangeForm] = useState({movieName:'',theatre:'',
-          startDate:'',endDate:'',genre:'',slots:'',ratings:'',description:'',city:'',location:''})
-    const [rowNums,setRowNums] = useState([]);
-    const [index,setIndex] = useState('');
+          startDate:'',endDate:'',genre:'',slots:'',ratings:'',description:'',city:'',location:''}) //this is used in admin side in create new movie for creating a movie
+    const [rowNums,setRowNums] = useState([]); //this is used in admin side for creation of seats by user
+    const [index,setIndex] = useState('');  //this is used 
     const [message, setMessage] = useState('');
     const [city,setCity] = useState('');
     const [state,setState] = useState('');
     const [url,setUrl] = useState('');
     const [stateList,setStateList] = useState('');
     const [cityList,setCityList] = useState('');
-    const [completeDataList,setCompleteDataList] = useState('');
-    const [movieList,setMovieList] = useState('');
+    const [completeDataList,setCompleteDataList] = useState(null);
+    const [movieList,setMovieList] = useState(null);
     const [completeMovieDetails,setCompeletMovieDetails] = useState('');
 
     return(
         <BsCxt.Provider value = {{email,setEmail,token,setToken,country,setCountry,stateList,setStateList,cityList,movieName,setMovieName,
             setCityList,movieList,setMovieList,completeMovieDetails,setCompeletMovieDetails,city,setCity,state,setState,url,setUrl,
-            message,setMessage,completeDataList,setCompleteDataList,index,setIndex,
+            message,setMessage,completeDataList,setCompleteDataList,index,setIndex,listMovieDown,setListMovieDown,
         adminBigList,setAdminBigList,rowNums,setRowNums,changeform,setChangeForm}}>{props.children}</BsCxt.Provider>
     )
 }

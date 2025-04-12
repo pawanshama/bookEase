@@ -9,9 +9,10 @@ import axios from 'axios'
 let data=null;
 const CreateNewMovie = () => {
     const context = useContext(BsCxt);
-    const {movieName,adminBigList,country,rowNums,setRowNums,token,changeform,setChangeForm,email}= context
+    const {movieName,adminBigList,country,rowNums,setRowNums,
+      token,changeform,setChangeForm,email,setMessage,message}= context
    const [image,setImage] = useState(null);
-    console.log(adminBigList.length)
+    // console.log(adminBigList.length)
     
     if(!data && adminBigList.length>0 && movieName !== ''){ 
         data = adminBigList.filter((item)=>item.movieName === movieName)
@@ -22,9 +23,9 @@ const CreateNewMovie = () => {
           genre:data[0].genre,ratings:data[0].ratings,description:data[0].description,city:data[0].city,
           location:data[0].location})
     }
- 
+    console.log(Object.keys(rowNums).length)
     useEffect(()=>{
-        console.log(rowNums);
+        // console.log(rowNums);
         setRowNums(rowNums)
         if(rowNums.length>0){
           setChangeForm({movieName:data[0].movieName,theatre:data[0].theatre,
@@ -73,10 +74,13 @@ const CreateNewMovie = () => {
               "authorization": `${token}` 
           }
         })
-          console.log(d.data.data);
+          // console.log(d.data.data);
+          setMessage(d.data.message)
+
       }
       catch(error){
-        console.log(error.response.data.message)
+        setMessage(error.response.data.message)
+        // console.log(error.response.data.message)
       }
 
     }
@@ -90,15 +94,20 @@ const CreateNewMovie = () => {
     }
   
   return (
-
-   
         <div className='containers'>
           <div>
           <div className='nav-section'>
-         <div className='logo-section'>🎬logo</div>
+         <div className='logo-section'>🎬mOvEi</div>
          <div className='location-section'>{country}</div>
          <div className='choose-location'>🛖</div>
        </div>
+      
+        {message !==''?
+          <div></div> 
+           :
+          <div className='set-message' style={{color:'black',fontSize:'x-large'}}>{message}</div>
+        }
+       
           </div>
           <div className='form-container'>
             <form onSubmit={handleSubmit} style={{backgroundColor:'white'}}>
@@ -168,7 +177,12 @@ const CreateNewMovie = () => {
              seats-and-price-set :
             </span>
             <button type='button' onClick={handleClick} style={{marginLeft:'2px',backgroundColor:'white',
-              margin:'0.2rem',fontSize:'large',borderRadius:'0.3rem',backgroundColor:'green'}}>click for seats</button> <span>{rowNums.length>0?<p  style={{backgroundColor:'white'}}>seats Booked</p>:<p  style={{backgroundColor:'white'}}>seats empty</p>}</span>
+            margin:'0.2rem',fontSize:'large',borderRadius:'0.3rem',backgroundColor:'green'}}>click for seats</button>
+            {
+               Object.keys(rowNums).length>0?
+               <p  style={{backgroundColor:'white'}}>seats Booked</p>:
+               <p  style={{backgroundColor:'white'}}>seats empty</p>
+            }
             </div>
             <div className='elements'>
               <span>
@@ -183,7 +197,7 @@ const CreateNewMovie = () => {
              </div>
              <div>
             <button style={{backgroundColor:'red',borderRadius:'12px',padding:'4px',
-              width:'4rem',borderRadius:'0.8rem'}} onClick={handleCancel}> Cancel </button>
+              width:'4rem',borderRadius:'0.8rem'}}  type='button' onClick={handleCancel}> Cancel </button>
               </div>
               </div>
             </form>

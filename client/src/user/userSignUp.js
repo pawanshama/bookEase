@@ -47,7 +47,7 @@ const UserSignUp = () => {
          <div className='sign-in'>
     
             <form onSubmit={handleSubmit} style={{backgroundColor:'blue'}}>
-               <div className='logo-section'>🎬mOvEi</div>
+               <div className='logo-section-this'>🎬mOvEi</div>
                <div className='personal'>
               <input style={{color:'rgb(223, 228, 234)',fontFamily:'sans-serif'}}
               placeholder='Username' type="text" name="name" value={volunteer.name} onChange={handleChange} />

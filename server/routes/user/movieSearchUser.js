@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/user',ensureAuthenticated,async(req,res)=>{
      try{
            const {city} = req.query;
-           console.log(req.query);
+          //  console.log(req.query);
            const queryArray=[];
            if (city && city.trim() !== '') {
             queryArray.push({ city: { $regex: city, $options: 'i' } });
@@ -16,14 +16,14 @@ router.get('/user',ensureAuthenticated,async(req,res)=>{
            if(data.length==0){
              setTimeout(()=>{
 
-                 res.status(301).json({success:false,message:"movie not find"})
+                 res.status(301).json({success:false,message:"movie not found"})
                 },5000)
               return;
            }
-           res.status(201).json({success:true,message:'success',data});
+           res.status(201).json({success:true,message:'Here are your movies',data});
            return;
      }catch(err){
-        res.status(501).json('unable to fetch movie for user');
+        res.status(501).json({message:'unable to fetch movie for user'});
      }
 })
 

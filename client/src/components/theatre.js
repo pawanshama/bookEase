@@ -9,8 +9,6 @@ const Theatre = (props) => {
     const {city,movieName,completeDataList,setIndex} = context;
     const navigate = useNavigate();
     
-    // console.log(completeDataList);
-    
     const handleChangeScreen = ()=>{
 
     }
@@ -18,7 +16,8 @@ const Theatre = (props) => {
     const handleSlot=(e)=>{
         e.preventDefault();
         const mn = e.target.getAttribute('name')
-        setIndex(mn.trim());
+        // console.log(mn);
+        setIndex(mn);
         navigate('/home/booking/theatre')
     }
   return (

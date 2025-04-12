@@ -94,14 +94,12 @@ const UserLogin = () => {
            </div>
          <div style={{display:'flex',flexDirection:'column'}}>
            <div style={{color:'black',backgroundColor:'blue'}}>
-          <button type='submit' style={{color:'black',backgroundColor:'red',padding:'0.3rem',width:'10rem',
-            borderRadius:'12px',fontSize:'x-large',fontFamily:'sans-serif'}}>Login </button>
+          <button type='submit' >Login </button>
            </div>
            <div style={{color:'black',backgroundColor:'blue'}}>
-          <button type='submit' style={{color:'black',backgroundColor:'red',padding:'0.3rem',width:'10rem',
-            borderRadius:'12px',fontSize:'x-large',fontFamily:'sans-serif'}}>
+          <button type='submit' >
            <Link className='mid' to = {`/signUp`} style={{color:'black',backgroundColor:'red',
-            textDecoration:'none',fontSize:'large',fontFamily:'sans-serif'}}>SignUp</Link></button>
+            textDecoration:'none',fontFamily:'sans-serif'}}>SignUp</Link></button>
            </div>
          </div>
            <div style={{color:'black',backgroundColor:'blue'}}>

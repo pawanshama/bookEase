@@ -1,35 +1,35 @@
 import React, { useContext } from 'react'
-// import Radiocomponent from './radiocomponent'
-// import { movieList } from '../datas'
+import Design from './design'
 import '../Css/SelectMovie.css'
 import BsCxt from '../context/Bscontext'
 import CardMovie from './cardMovie'
+import { useNavigate } from 'react-router-dom'
 
 const Selectmovie = (props) => {
   const context= useContext(BsCxt);
-  // let movieList=[];
+  const navigate=useNavigate();
   const {move} = props
-  // const movieFunc=async()=>{
-  //   let data = await fetch(`http://localhost:8000/api/movieSearch`,{
-  //       method:"Get",
-  //   })
-  //   movieList=data;
-  // }
-
-  // const handleChangeMovie=(val)=>{
-  //   changeMovie(val)
-  //   setQ(val)
-  //   window.localStorage.setItem("movie",val)
-  // }
+  
   return (
     <>
     <h1 className='SM_heading-movie'>Something New :- </h1>
     <div className='SM_main_container-movie'>
-        {move.length>0 && move.map((el,index)=>{
+        {move? move.map((el,index)=>{
             return (
                 <CardMovie text={el} key={index}/>
             )
-        })}
+        }):
+        (
+          <>
+             <h1 className='SM_heading-movie'>No movies listed :- </h1>
+             <div style={{height:"100%",width:'100%',justifyContent:'center',alignItems:'center'}} >
+                <button type='button' >
+                  <Design word='go back'/>
+                </button>
+             </div>
+          </>
+        )
+        }
     </div>
     </>
   )
