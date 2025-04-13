@@ -38,7 +38,7 @@ const Navbar = (props) => {
   return (
     <div>
        <div className='nav-section'>
-         <div className='logo-section'>🎬logo</div>
+         <div className='logo-section'>🎬mOvIe</div>
          <input placeholder='state Name...' className='input-section' value={q} onChange={handleQuerySearch}/>
          <div className='location-section'>{country}</div>
          <div className='choose-location'>🛖</div>

@@ -43,7 +43,7 @@ const NavbarJs = (props) => {
   return (
     <div>
        <div className='nav-section'>
-         <div className='logo-section'>🎬logo</div>
+         <div className='logo-section'>🎬mOvIe</div>
          <input placeholder='city Name...' className='input-section' value={q} onChange={handleCityQuery}/>
          <div className='location-section'>{state}</div>
          <div className='choose-location'>🛖</div>

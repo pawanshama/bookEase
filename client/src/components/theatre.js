@@ -23,37 +23,47 @@ const Theatre = (props) => {
   return (
     <div>
          <div className='nav-section'>
-          <div className='logo-section'>🎬logo</div>
+          <div className='logo-section'>🎬mOvIe</div>
             {/* <input placeholder='state Name...' className='input-section'/> */}
             <div className='location-section' style={{marginLeft:'6rem'}}>{city}</div>
             <div className='choose-location'>🛖</div>
          </div>
          <br/>
          <br/>
-            <div style={{fontSize:'xx-large',marginLeft:'6rem'}}>{movieName}</div>
+            <div style={{fontSize:'xx-large',marginLeft:'6rem',fontWeight:'bold'}}>{movieName}</div>
          <br/>
-         <br/>
+         <div style={{width:'100%',height:'2px',backgroundColor:'black'}}></div>
+         {/* <br/> */}
          {/* <div> */}
-
+        
         {
-          completeDataList && completeDataList.map((el,index)=>{
+          completeDataList ?
+          <div>
+            <div style={{fontSize:'x-large',color:'green',display:'flex',justifyContent:'center'}}>Cinemas in your place.</div>
+          {
+            completeDataList.map((el,index)=>{
               return (
                 <>
                    <div key ={Date.now()} style={{width:'100%',height:'5rem',color:'black',backgroundColor:'rgb(222, 244, 220)',borderRadius:'12px',marginTop:'2rem',display:'flex'}}>
-                <div key={Date.now()} style={{fontSize:'large',marginLeft:'6rem',display:'flex',marginTop:'2rem'}}> {el.theatre} </div> 
+                <div key={Date.now()} style={{fontSize:'large',marginLeft:'6rem',display:'flex',marginTop:'2rem',backgroundColor:'rgb(222, 244, 220)'}}> 
+                  {el.theatre}<span style={{fontSize:'medium',marginLeft:'0.5rem',backgroundColor:'rgb(222, 244, 220)'}}> ({el.location})</span> </div> 
                  <div key={index} className='SM_main_container' onClick={(e)=>handleSlot(e)}>
                     {
-                        el.slots.map((e,ind)=>{
+                      el.slots.map((e,ind)=>{
                         return (
-                            <Radiocomponent text={e} key={ind} data={el.movieName} changeSelection={handleChangeScreen}/>
-                            )
-                        })
+                          <Radiocomponent text={e} key={ind} data={el.movieName} changeSelection={handleChangeScreen}/>
+                        )
+                      })
                     }
                  </div>
                 </div>
                 </>
               )
-           })     
+            })     
+          }
+          </div>
+           :
+           <div></div>
         }
         {/* </div> */}
     </div>

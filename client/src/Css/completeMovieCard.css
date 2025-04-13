@@ -102,6 +102,7 @@
 
     .location-section, .choose-location {
         font-size: large;
+        margin-left: 6rem;
     }
 
     .main-movie {
