@@ -2,7 +2,7 @@ import React, { useContext, useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../Css/navbar.css'
 import {stateListMove} from "../apicalls/move.js"
-import BsCxt from '../context/Bscontext'
+import BsCxt from '../context/Bscontext.js'
 
 const Navbar = (props) => {
   const context = useContext(BsCxt);

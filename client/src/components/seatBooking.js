@@ -1,25 +1,10 @@
 import React, { useContext } from "react";
 import "../Css/SeatBooking.css";
 import BsCxt from "../context/Bscontext";
-
-const rows = [
-  { id: 'J', seats: [16, 15, 14, 13] },
-  { id: 'I', seats: [18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4] },
-  { id: 'H', seats: [18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4] },
-  { id: "G", seats: [18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4] },
-  { id: "F", seats: [15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1] },
-  { id: "E", seats: [15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1] },
-  { id: "D", seats: [15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1] },
-  { id: 'C', seats: [15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1] },
-  { id: "B", seats: [15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1] },
-  { id: "A", seats: [13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1] },
-];
-
 const SeatBooking = () => {
   const context = useContext(BsCxt)
   const {noOfSeat,changeNoOfSeats} = context
   const {selectedSeats, lockedSeats} = context;
-  // const {} = context;
 
   const toggleSeatSelection = (row, seat) => {
     console.log(row);

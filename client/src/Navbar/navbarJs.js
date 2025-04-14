@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../Css/navbar.css'
 import {districtListMove} from "../apicalls/move.js"
-import BsCxt from '../context/Bscontext'
+import BsCxt from '../context/Bscontext.js'
 
 const NavbarJs = (props) => {
   // const locationCountry='India'

@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import {useNavigate} from "react-router-dom"
 import '../Css/bookAtTheatre.css'
 import BsCxt from '../context/Bscontext';
-import Design from './design';
+import Design from '../components/design';
 
 const BookAtTheatre = (props) => {
     const context = useContext(BsCxt);
@@ -54,7 +54,6 @@ const BookAtTheatre = (props) => {
                     {seat}
                     </button>
                 )):
-                // <Design word={'Please try Again!'}/>
                 <div></div>
                 }
                 </div>
