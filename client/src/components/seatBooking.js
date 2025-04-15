@@ -7,8 +7,6 @@ const SeatBooking = () => {
   const {selectedSeats, lockedSeats} = context;
 
   const toggleSeatSelection = (row, seat) => {
-    console.log(row);
-    // let r = `${row}` 
     changeNoOfSeats({...noOfSeat,[row]:[...noOfSeat[row],seat]});
 
                 window.localStorage.setItem(
@@ -19,35 +17,35 @@ const SeatBooking = () => {
                 )
     if (lockedSeats[`${row}-${seat}`]) return;
 
-    // setSelectedSeats((prev) => {
-    //   const newSelection = prev.includes(`${row}-${seat}`)
-    //     ? prev.filter((s) => s !== `${row}-${seat}`)
-    //     : [...prev, `${row}-${seat}`];
+    setSelectedSeats((prev) => {
+      const newSelection = prev.includes(`${row}-${seat}`)
+        ? prev.filter((s) => s !== `${row}-${seat}`)
+        : [...prev, `${row}-${seat}`];
 
-    //   setLockedSeats((prevLocks) => {
-    //     const newLocks = { ...prevLocks };
-    //     if (!prev.includes(`${row}-${seat}`)) {
-          // newLocks[`${row}-${seat}`] = true;
-  //         setTimeout(() => {
-  //           setLockedSeats((locks) => {
-  //             const updatedLocks = { ...locks };
-  //             delete updatedLocks[`${row}-${seat}`];
-  //             window.localStorage.clear()
-  //             return updatedLocks;
-  //           });
-  //         }, 5000);
-        // }
+      setLockedSeats((prevLocks) => {
+        const newLocks = { ...prevLocks };
+        if (!prev.includes(`${row}-${seat}`)) {
+          newLocks[`${row}-${seat}`] = true;
+          setTimeout(() => {
+            setLockedSeats((locks) => {
+              const updatedLocks = { ...locks };
+              delete updatedLocks[`${row}-${seat}`];
+              window.localStorage.clear()
+              return updatedLocks;
+            });
+          }, 5000);
+        }
 
-        // return newLocks;
-  //     });
-  //     setTimeout(()=>{
-  //       setSelectedSeats((newS)=>{
-  //         const select = newS.filter((s)=>s!==`${row}-${seat}`)
-  //         return select;
-  //       })
-  //     },5000);
-  //     return newSelection;
-  //   });
+        return newLocks;
+      });
+      setTimeout(()=>{
+        setSelectedSeats((newS)=>{
+          const select = newS.filter((s)=>s!==`${row}-${seat}`)
+          return select;
+        })
+      },5000);
+      return newSelection;
+    });
   };
 
   return (

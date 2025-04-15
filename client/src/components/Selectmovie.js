@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import Design from './design'
 import '../Css/SelectMovie.css'
 import BsCxt from '../context/Bscontext'
-import CardMovie from './cardMovie'
+import CardMovie from '../cardDesign/cardMovie'
 import { useNavigate } from 'react-router-dom'
 
 const Selectmovie = (props) => {
