@@ -9,7 +9,8 @@ const BookAtTheatre = (props) => {
     const [r,setR]=useState(null);
     const [rr,setRR]=useState(null);
     const navigate = useNavigate();
-    const {completeDataList,city,index} = context;
+    const {noOfSeat,changeNoOfSeats} = useState([]);
+    const {completeDataList,city,index,lockedSeats,setLockedSeats,selectedSeats,setSelectedSeats} = context;
     useEffect(()=>{
       if(!r && index!=='' && completeDataList){
         setRR(completeDataList.filter((prev)=>prev.movieName===index)[0])
@@ -22,10 +23,52 @@ const BookAtTheatre = (props) => {
     
     useEffect(()=>{
       if(rr){
-        console.log(rr);
         setR(rr.seats)
       } 
     },[rr,r])
+  
+
+    //locking buttons so that no one can access them if already booked by another user.
+    const toggleSeatSelection = (row, seat) => {
+      // changeNoOfSeats([...noOfSeat,`${row}-${seat}`]);
+      window.localStorage.setItem(
+        "seats",
+        JSON.stringify({
+            ...noOfSeat,
+        })
+       )
+      if (lockedSeats[`${row}-${seat}`]) return;
+
+    setSelectedSeats((prev) => {
+      const newSelection = prev.includes(`${row}-${seat}`)
+        ? prev.filter((s) => s !== `${row}-${seat}`)
+        : [...prev, `${row}-${seat}`];
+
+      setLockedSeats((prevLocks) => {
+        const newLocks = { ...prevLocks };
+        if (!prev.includes(`${row}-${seat}`)) {
+          newLocks[`${row}-${seat}`] = true;
+          setTimeout(() => {
+            setLockedSeats((locks) => {
+              const updatedLocks = { ...locks };
+              delete updatedLocks[`${row}-${seat}`];
+              window.localStorage.clear()
+              return updatedLocks;
+            });
+          }, 5000);
+        }
+
+        return newLocks;
+      });
+      setTimeout(()=>{
+        setSelectedSeats((newS)=>{
+          const select = newS.filter((s)=>s!==`${row}-${seat}`)
+          return select;
+        })
+      },5000);
+      return newSelection;
+    });
+  };
    
   return (
     <div>
@@ -45,10 +88,13 @@ const BookAtTheatre = (props) => {
                 <br/>
                 <hr/>
                 <br/>
-                {r[row]?r[row].map((seat) => (
+                {r[row]?r[row].map((seat,index) => (
                     <button
                     key={seat}
-                    className={`seat`}
+                    // className={`seat`}
+                    className={`seat ${selectedSeats.includes(`${row.id}-${seat}`) ? "selected" : ""} ${lockedSeats[`${row.id}-${seat}`] ? "locked" : ""}`}
+                    onClick={() => toggleSeatSelection(row.id, seat)}
+                    disabled={lockedSeats[`${row.id}-${seat}`]}
                     name={row.id}
                     >
                     {seat}

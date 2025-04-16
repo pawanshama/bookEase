@@ -21,12 +21,15 @@ const BsState = (props)=>{
     const [completeDataList,setCompleteDataList] = useState(null);
     const [movieList,setMovieList] = useState(null);
     const [completeMovieDetails,setCompeletMovieDetails] = useState('');
+    const [selectedSeats, setSelectedSeats] = useState([]);
+    const [lockedSeats, setLockedSeats] = useState({});
 
     return(
         <BsCxt.Provider value = {{email,setEmail,token,setToken,country,setCountry,stateList,setStateList,cityList,movieName,setMovieName,
             setCityList,movieList,setMovieList,completeMovieDetails,setCompeletMovieDetails,city,setCity,state,setState,url,setUrl,
             message,setMessage,completeDataList,setCompleteDataList,index,setIndex,listMovieDown,setListMovieDown,
-        adminBigList,setAdminBigList,rowNums,setRowNums,changeform,setChangeForm}}>{props.children}</BsCxt.Provider>
+            adminBigList,setAdminBigList,rowNums,setRowNums,changeform,setChangeForm,
+            selectedSeats,setSelectedSeats,lockedSeats,setLockedSeats}}>{props.children}</BsCxt.Provider>
     )
 }
 export default BsState;
