@@ -9,6 +9,8 @@ import Theatre from './components/theatre'
 import BookAtTheatre from './cardDesign/bookAtTheatre.js'
 import UserLogin from './user/userLogin'
 import Admin from './adminPages/admin'
+import Success from './statusPage/success.js'
+import Failure from './statusPage/failure.js'
 import CreateNewMovie from './adminPages/createNewMovie'
 import SeatsCreation from './adminPages/seatsCreation'
 import UserSignUp from './user/userSignUp'
@@ -34,6 +36,14 @@ const App = () => {
       <Route path='/home/cardMovie' element={<BsState><CompleteMovieCard /></BsState>}/>
       <Route path='/home' element={<BsState>
         <Home city={city}/> 
+      </BsState>}
+      />
+      <Route path='/home/booking/status=success' element={<BsState>
+        <Success/>
+      </BsState>}
+      />
+      <Route path='/home/booking/status=success' element={<BsState>
+        <Failure/>
       </BsState>}
       />
     </Routes>

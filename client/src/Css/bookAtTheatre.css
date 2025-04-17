@@ -1,3 +1,47 @@
+
+*{padding: 0;
+margin: 0;
+box-sizing: border-box;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/* ----- Base Styles ----- */
+.nav-section {
+display: flex;
+flex-direction: row;
+align-items: center;
+color: black;
+font-size: medium;
+margin-top: 0.7rem;
+flex-wrap: wrap;
+padding: 0 1rem;
+}
+
+.logo-section {
+font-size: xx-large;
+font-weight: 600;
+color: rgb(226, 165, 165);
+margin-right: 2rem;
+}
+
+.location-section,
+.choose-location {
+color: black;
+margin-left: 0.3rem;
+cursor: pointer;
+}
+
+.location-section {
+font-size: xx-large;
+margin-top: 0.2rem;
+}
+
+.choose-location {
+font-size: large;
+margin-top: 0.2rem;
+color: rgb(146, 131, 131);
+}
+
 .seat-container { display: flex;  
     flex-direction: column; 
     align-items: center; 
@@ -14,10 +58,13 @@
     margin-right: 10px; 
     width: 30px; 
     text-align: right; 
+    background-color:#f0eaea;
 } 
 .seat { 
     width: 35px; 
     height: 35px; 
+    /* align-items: center; */
+    justify-content: center;
     margin: 5px; 
     font-size: 14px; 
     font-weight: bold; 
@@ -56,22 +103,56 @@
 
 
 @media (max-width: 1024px) {
-    .seat {
-      width: 35px;
-      height: 35px;
-      font-size: 0.9rem;
-    }
+  .nav-section {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .logo-section {
+    font-size: 1.5rem;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .location-section {
+    font-size: 1.2rem;
+  }
+
+  .choose-location {
+    font-size: 1rem;
+  }
+  .seat {
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    justify-content: center;
+    font-size: 0.9rem;
+  }
     
-    .screen-panel {
-      width: 90%;
-      font-size: 1rem;
-    }
+  .screen-panel {
+    width: 90%;
+    font-size: 1rem;
+  }
   }
   
   @media (max-width: 768px) {
+    .nav-section {
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+    }
+  
+    .logo-section {
+      font-size: 1.7rem;
+      margin-right: 2rem;
+    }
+
     .seat {
       width: 30px;
       height: 30px;
+      align-items: center;
+      justify-content: center;
       font-size: 0.8rem;
     }
     
@@ -82,9 +163,21 @@
   }
   
   @media (max-width: 480px) {
+    .nav-section {
+      justify-content: flex-start;
+      padding: 1rem 3rem;
+    }
+  
+    .logo-section {
+      margin-left: 3rem;
+      margin-right: 6rem;
+    }
+    
     .seat {
       width: 25px;
       height: 25px;
+      align-items: center;
+      justify-content: center;
       font-size: 0.7rem;
     }
   

@@ -14,10 +14,10 @@ const CompleteMovieCard = (props) => {
   
  
   useEffect(()=>{
-    if(filteredData.length===0 && movieList.length>0){
+    if(filteredData.length===0 && movieList!==null){
       setFilteredData(movieList.filter((prev)=> prev.movieName === movieName)[0])
     }
-    else if(movieList.length===0){
+    else if(!movieList){
        setRenderFunction(1);
     }
   },[filteredData])

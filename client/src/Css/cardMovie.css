@@ -1,45 +1,3 @@
-/* .conr{
-    display: flex;
-    flex-direction: column;
-    width:14rem;
-    height:20rem;
-    color:black;
-    margin:2px 2px 2px 2px;
-    
-}
-.second{
-    display: flex;
-    flex-direction: column;
-    width:11rem;
-    height:13rem;
-   
-   
-    align-items: center;
-    padding:2px;
-}
-    
-
-
-.image-section img{
-    width:10rem;
-    height:10rem;
-    border-radius: 10px;
-}
-
-.title-section{
-    width:10rem;
-    color:black;
-    word-wrap: break-word;
-    
-    font-size: x-large;
-    font-family: 'Times New Roman', Times, serif;
-} */
-
-/* Base styles - Desktop & Laptop */
-
-
-
-
 .conr {
     width: 100%;
     max-width: 300px;
@@ -85,9 +43,6 @@
 .rat-img-section {
     width: 60px;
     height: 20px;
-    /* background-image: url('/your-star-rating-icon.png'); 
-    background-size: contain;
-    background-repeat: no-repeat; */
 }
 
 .title-section {

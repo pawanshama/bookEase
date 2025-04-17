@@ -7,7 +7,6 @@
 .nav-section{
     display: flex;
     flex-direction: row;
-    /* background-color: whitesmoke; */
     color: black;
     font-size: medium;
     font-family: 'Times New Roman', Times, serif;
@@ -60,7 +59,5 @@
     width: 80%;
     height: 2rem;
     border-radius: 12px;
-    /* border-style: solid; */
-    /* border-color: rgb(135, 97, 97); */
     cursor: pointer;
 }
