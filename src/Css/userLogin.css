@@ -1,0 +1,119 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    height:100%;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: rgb(246, 240, 225);
+}
+.container{
+    background-color: rgb(246, 240, 225);
+    display: flex;
+    width:100%;
+    height:100%;
+    justify-content: center;
+    margin-top: 2rem;
+    padding: 1rem;
+    flex-wrap: wrap;
+  }
+  
+.sign-in {
+    width: 100%;
+    max-width: 500px;
+    /* height:750px; */
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 12px;
+    align-items: center;
+    box-sizing: border-box;
+}
+  
+.logo-section-this {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: rgb(226, 165, 165);
+    margin: 1rem auto;
+    background-color: #fff;
+    text-align: center;
+}
+.form-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+  
+.personal {
+    display: block;
+    margin: 1rem;
+    background-color: #fff;
+    width: 100%;
+    height:auto;
+    text-align: center;
+}
+  
+input {
+    width: 100%;
+    max-width: 20rem;
+    height:auto;
+    margin: 0.5rem auto;
+    border-radius: 12px;
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+
+button{
+    color:black;
+    background-color:rgb(223, 228, 234);
+    padding:0.3rem;
+    width:10rem;
+    height:auto;
+    border-radius:12px;
+    font-size:x-large;
+    font-family:'sans-serif';
+}
+  
+  /* ------------------- Responsive Breakpoints ------------------- */
+  
+  @media (max-width: 768px) {
+    .sign-in {
+      padding: 1.5rem;
+    }
+  
+    .logo-section-this {
+      font-size: 1.5rem;
+    }
+  
+    input {
+      max-width: 16rem;
+    }
+    button{
+        font-size:large;
+      }
+  }
+  
+  @media (max-width: 480px) {
+    .sign-in {
+      padding: 1rem;
+    }
+  
+    .logo-section-this {
+      font-size: 1.2rem;
+    }
+  
+    input {
+      max-width: 16rem;
+    }
+    button{ 
+      font-size:large;
+    }
+  }
+

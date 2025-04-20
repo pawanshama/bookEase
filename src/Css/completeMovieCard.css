@@ -1,0 +1,184 @@
+/* Base Styles (for desktops and laptops) */
+.nav-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    color: black;
+    font-size: medium;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 0.7rem;
+}
+
+.logo-section {
+    font-family: 'Times New Roman', Times, serif;
+    margin-left: 3rem;
+    font-size: xx-large;
+    font-weight: 600;
+    color: rgb(226, 165, 165);
+    margin-right: 6rem;
+}
+
+.location-section {
+    color: black;
+    width: auto;
+    font-size: xx-large;
+    margin-left: 6rem;
+    margin-top: 0.2rem;
+    cursor: pointer;
+}
+
+.choose-location {
+    color: rgb(146, 131, 131);
+    font-size: large;
+    margin-top: 0.2rem;
+    margin-left: 0.3rem;
+    cursor: pointer;
+}
+
+.container {
+    width: 100%;
+    padding: 30px 30px 0px 30px;
+    background-color: #f0eaea;
+    border-radius: 5px;
+    color: #fff;
+    margin-bottom: 2rem;
+}
+
+
+/* Main movie section */
+.main-movie {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    color: white;
+}
+
+.movie-card img {
+    width: 250px;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Responsive Info Section */
+.main-movie > div:last-child {
+    flex: 1;
+    min-width: 250px;
+}
+
+/* Responsive Typography and Button */
+.main-movie button {
+    background-color: red;
+    font-size: large;
+    border-radius: 0.7rem;
+    padding: 0.4rem 1rem;
+    margin-top: 2rem;
+    margin-left: 1rem;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+/* Tablet View */
+@media (max-width: 1024px) {
+    .nav-section {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .logo-section {
+        font-size: x-large;
+        margin-left: 1rem;
+        margin-right: 2rem;
+    }
+
+    .location-section, .choose-location {
+        font-size: large;
+        margin-left: 6rem;
+    }
+
+    .main-movie {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1.5rem;
+    }
+
+    .movie-card img {
+        width: 70%;
+    }
+
+    .main-movie button {
+        margin-left: 0;
+    }
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .nav-section {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+    }
+
+    .logo-section {
+        margin: 0 0 1rem 0;
+        font-size: x-large;
+    }
+
+    .location-section, .choose-location {
+        font-size: medium;
+        margin-left:4rem;
+    }
+
+    .main-movie {
+        padding: 1rem;
+    }
+
+    .movie-card img {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .main-movie > div:last-child {
+        text-align: center;
+    }
+
+    .main-movie button {
+        margin: 1.5rem auto 0 auto;
+        display: block;
+    }
+}
+
+/* Extra Small Devices */
+@media (max-width: 480px) {
+    .logo-section {
+        font-size: large;
+    }
+
+    .location-section, .choose-location {
+        font-size: medium;
+        margin-left:1.3rem;
+    }
+
+    .container {
+        padding: 20px 15px 0 15px;
+    }
+
+    .main-movie {
+        padding: 1rem 0.5rem;
+    }
+
+    .main-movie button {
+        font-size: medium;
+        padding: 0.3rem 0.8rem;
+    }
+}

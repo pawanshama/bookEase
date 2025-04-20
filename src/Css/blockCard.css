@@ -1,0 +1,191 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+  
+  /* ----- Base Styles ----- */
+  .borderBox{
+    display: flex;
+    flex-direction: column;
+    width:auto;
+    height:auto;
+  }
+
+  .nav-section {
+    display: flex;
+    flex-direction: row;
+    width:auto;
+    height:auto;
+    align-items: center;
+    color: black;
+    font-size: medium;
+    margin-top: 0.7rem;
+    flex-wrap: wrap;
+    padding: 0 1rem;
+  }
+  
+  .logo-section {
+    font-size: xx-large;
+    font-weight: 600;
+    color: rgb(226, 165, 165);
+    margin-right: 2rem;
+  }
+  
+  .input-section {
+    width: 20rem;
+    height: 1.7rem;
+    border-radius: 4px;
+    color: black;
+    margin-top: 1rem;
+    background-color: white;
+    padding: 0.2rem 0.5rem;
+  }
+  
+  .new-movie{
+    margin-top:0.5rem;
+    margin-left:3rem;
+    background-color:rgb(218, 222, 211);
+    color:black;
+    padding:0.7rem;
+    width:auto;
+    height:auto;
+    border-radius:10px;
+    font-size:x-large;
+    cursor:pointer;
+  } 
+  
+  .logout{
+    margin-top:0.5rem;
+    margin-left:3rem;
+    background-color:rgb(218, 222, 211);
+    color:black;
+    padding:0.7rem;
+    width:auto;
+    height:auto;
+    border-radius:10px;
+    font-size:x-large;
+    cursor:pointer;
+  }
+
+  .location-section,
+  .choose-location {
+    color: black;
+    margin-left: 0.3rem;
+    cursor: pointer;
+  }
+  
+  .location-section {
+    font-size: xx-large;
+    margin-top: 0.2rem;
+  }
+  
+  .choose-location {
+    font-size: large;
+    margin-top: 0.2rem;
+    color: rgb(146, 131, 131);
+  }
+  
+  .fulllist {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .select-section {
+    background-color: rgb(246, 240, 225);
+    display: flex;
+    color: black;
+    padding: 0.3rem;
+    margin-top: 0.2rem;
+    width: 80%;
+    height: 2rem;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* -------------------------- Responsive Media Queries -------------------------- */
+  
+  /* 📱 Mobile (up to 480px) */
+  @media (max-width: 480px) {
+    .nav-section {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1rem;
+    }
+  
+    .logo-section {
+      font-size: 1.5rem;
+      margin-left: 0;
+      margin-right: 0;
+    }
+  
+    .input-section {
+      width: 100%;
+      margin-right: 0;
+    }
+  
+    .location-section {
+      font-size: 1.2rem;
+    }
+  
+    .choose-location {
+      font-size: 1rem;
+    }
+  
+    .select-section {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+  
+  /* 📱 Tablets (481px to 768px) */
+  @media (min-width: 481px) and (max-width: 768px) {
+    .nav-section {
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+    }
+  
+    .logo-section {
+      font-size: 1.7rem;
+      margin-right: 2rem;
+    }
+  
+    .input-section {
+      width: 15rem;
+      margin-right: 2rem;
+    }
+  
+    .select-section {
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  
+  /* 💻 Laptops and desktops (769px and up) */
+  @media (min-width: 769px) {
+    .nav-section {
+      justify-content: flex-start;
+      padding: 1rem 3rem;
+    }
+  
+    .logo-section {
+      margin-left: 3rem;
+      margin-right: 6rem;
+    }
+  
+    .input-section {
+      width: 20rem;
+      margin-right: 10rem;
+    }
+  
+    .select-section {
+      width: 80%;
+      margin-left: 12rem;
+    }
+  }
+  

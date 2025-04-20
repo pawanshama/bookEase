@@ -1,0 +1,47 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
+}
+.responsive-box{
+    width: auto;
+    height: 1.8rem;
+    margin-top: 0.5rem;
+    background-color: rgb(224, 246, 195);
+    margin-left: 1rem;
+    border-radius: 0.7rem;
+    padding: 0 10px;
+    display: inline-block;
+  }
+  
+  /* 📱 Mobile (≤480px) */
+  @media (max-width: 480px) {
+    .responsive-box {
+      margin-left: 0.5rem;
+      padding: 0 8px;
+      height: 1.3rem;
+      font-size: 0.8rem;
+    }
+  }
+  
+  /* 📱 Tablet (481px–768px) */
+  @media (min-width: 481px) and (max-width: 768px) {
+    .responsive-box {
+      margin-left: 0.8rem;
+      padding: 0 9px;
+      height: 1.4rem;
+      font-size: 0.9rem;
+    }
+  }
+  
+  /* 💻 Desktop (≥769px) */
+  @media (min-width: 769px) {
+    .responsive-box {
+      /* Keep original styling or add tweaks if needed */
+      margin-left: 1rem;
+      padding: 0 10px;
+      height: 1.8rem;
+      font-size: 1.2rem;
+    }
+  }

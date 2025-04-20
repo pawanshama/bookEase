@@ -1,0 +1,9 @@
+.SM_main_container{
+    display:flex;
+    white-space: nowrap;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    margin-left: 4rem;
+    color: black;
+}

@@ -1,0 +1,63 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.nav-section{
+    display: flex;
+    flex-direction: row;
+    color: black;
+    font-size: medium;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 0.7rem;
+}
+.logo-section{
+    font-family: 'Times New Roman', Times, serif;
+    margin-left: 3rem;
+    font-size:xx-large;
+    font-weight: 600;
+    color: rgb(226, 165, 165);
+    margin-right: 6rem;
+}
+.input-section{
+    width: 20rem;
+    height: 1.7rem;
+    border-radius: 4px;
+    color: black;
+    margin-top: 1rem;
+    background-color: 5px 5px white;
+    margin-right: 20rem;
+}
+.location-section{
+    color:black;
+    font-size: xx-large;
+    margin-top: 0.2rem;
+    margin-left: 0.3rem;
+    cursor: pointer;
+}
+.choose-location{
+    color:rgb(146, 131, 131);
+    font-size: large;
+    margin-top: 0.2rem;
+    margin-left: 0.3rem;
+    cursor: pointer;
+}
+.fulllist{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+.select-section{
+    background-color: whitesmoke;
+    display: inline-block;
+    color: black;
+    padding:0.3rem;
+    margin-left: 12rem;
+    margin-top: 0.2rem;
+    width: 80%;
+    height: 2rem;
+    border-radius: 12px;
+    cursor: pointer;
+}
