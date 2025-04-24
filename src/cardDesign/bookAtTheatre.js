@@ -10,7 +10,16 @@ const BookAtTheatre = (props) => {
     const [r,setR]=useState(null);
     const [rr,setRR]=useState(null);
     const navigate = useNavigate();
-    const {completeDataList,city,index,lockedSeats,setLockedSeats,selectedSeats,setSelectedSeats} = context;
+    // const [newSelectedSeats,setNewSelectedSeats] = useState([]);
+    // const [newLockedSeats,setNewLockedSeats] = useState({});
+    const {completeDataList,city,index,newSelectedSeats,setNewSelectedSeats,
+      lockedSeats,selectedSeats,email,newLockedSeats,setNewLockedSeats} = context;
+
+    useEffect(()=>{
+      setNewSelectedSeats([]);
+      setNewLockedSeats({});
+    },[])
+
     useEffect(()=>{
       if(!r && index!=='' && completeDataList){
         setRR(completeDataList.filter((prev)=>prev.movieName===index)[0])
@@ -28,36 +37,38 @@ const BookAtTheatre = (props) => {
 
     //locking buttons so that no one can access them if already booked by another user.
     const toggleSeatSelection = (row, seat) => {
-      if (lockedSeats[`${row}-${seat}`]) return;
+      if (newLockedSeats[`${row}-${seat}`] || lockedSeats[`${row}-${seat}`]) return;
 
-    setSelectedSeats((prev) => {
+    setNewSelectedSeats((prev) => {
       const newSelection = prev.includes(`${row}-${seat}`)
         ? prev.filter((s) => s !== `${row}-${seat}`)
         : [...prev, `${row}-${seat}`];
 
-      setLockedSeats((prevLocks) => {
+      setNewLockedSeats((prevLocks) => {
         const newLocks = { ...prevLocks };
         if (!prev.includes(`${row}-${seat}`)) {
           newLocks[`${row}-${seat}`] = true;
           setTimeout(() => {
-            setLockedSeats((locks) => {
+            setNewLockedSeats((locks) => {
               const updatedLocks = { ...locks };
               delete updatedLocks[`${row}-${seat}`];
               return updatedLocks;
             });
-          }, 5000);
+          }, 3600000);
         }
         return newLocks;
       });
       setTimeout(()=>{
-        setSelectedSeats((newS)=>{
+        setNewSelectedSeats((newS)=>{
           const select = newS.filter((s)=>s!==`${row}-${seat}`)
           return select;
         })
-      },5000);
+      },3600000);
       return newSelection;
     });
   };
+
+  console.log(email);
 
   //Function call which requests payment and gateway options
   const makePayment=async()=>{
@@ -69,10 +80,11 @@ const BookAtTheatre = (props) => {
           headers:{
             "Content-Type":"application/json"
           },
-          body:JSON.stringify(selectedSeats)
+          body:JSON.stringify({email,newSelectedSeats})
         })
         
         const session = await response.json();
+
         console.log('success .. success . .')
         const result = stripe.redirectToCheckout({
           sessionId:session.id
@@ -83,6 +95,11 @@ const BookAtTheatre = (props) => {
         console.log("error occured at payment gateway");
       }
   }
+
+  //route to home
+  const routeToHome=()=>{
+    navigate('/home',{replace:true})
+  }
    
   return (
     <div>
@@ -90,9 +107,10 @@ const BookAtTheatre = (props) => {
           <div className='logo-section'>🎬mOvIe</div>
             <div className='location-section' style={{marginLeft:'6rem'}}>{city}</div>
             <div className='choose-location'>🛖</div>
+            <div className='logout' onClick={routeToHome}>Logout</div>
          </div>
          <br/>
-         Hello.........
+         {/* Hello......... */}
          <div className="seat-container">
            <div className="screen-panel">All eyes this way please!</div>
           
@@ -106,9 +124,9 @@ const BookAtTheatre = (props) => {
                     <button
                     key={`${index}-${row}`}
                     type='button'
-                    className={`seat ${selectedSeats.includes(`${row}-${index}`) ? "selected" : ""} ${lockedSeats[`${row}-${index}`] ? "locked" : ""}`}
+                    className={`seat ${(selectedSeats.includes(`${row}-${index}`) || newSelectedSeats.includes(`${row}-${index}`)) ? "selected" : ""} ${(lockedSeats[`${row}-${index}`] || newLockedSeats[`${row}-${index}`])? "locked" : ""}`}
                     onClick={() => toggleSeatSelection(row, index)}
-                    disabled={lockedSeats[`${row}-${index}`]}
+                    disabled={newLockedSeats[`${row}-${index}`]}
                     name={row}
                     >
                     {seat}
@@ -118,12 +136,14 @@ const BookAtTheatre = (props) => {
                 }
                 </div>
             )):
-            <Design word={'go back'}/>
+            <Design word={'go back'} url={`/home`}/>
           }
+        {/* <div style={{width:'auto',height:'auto',backgroundColor:'green'}}> */}
+          <button style={{width:'auto',height:'2.2rem',backgroundColor:'green',padding:'4px',
+            borderRadius:'0.8rem',fontSize:'x-large',marginTop:'2rem'}}
+            onClick={makePayment}> Pay Now </button>
+        {/* </div> */}
       </div>
-      <button style={{width:'auto',height:'2.2rem',backgroundColor:'green',padding:'4px',
-        borderRadius:'0.8rem',marginLeft:'17rem',marginTop:'2rem',marginBottom:'3rem',fontSize:'x-large'}}
-        onClick={makePayment}> Pay Now </button>
     </div>
   )
 }

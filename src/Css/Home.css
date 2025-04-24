@@ -51,6 +51,19 @@
     margin-left: 0.3rem;
     cursor: pointer;
 }
+.logout{
+    margin-top:0.5rem;
+    margin-left:3rem;
+    background-color:rgb(218, 222, 211);
+    color:black;
+    padding:0.7rem;
+    width:auto;
+    height:auto;
+    border-radius:10px;
+    font-size:x-large;
+    cursor:pointer;
+  }
+
 
 .container {
     width: 100%;

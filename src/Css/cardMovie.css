@@ -1,8 +1,16 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
 .conr {
     width: 100%;
+    height:28.125rem;
     max-width: 300px;
     margin: 1rem;
     padding: 1rem;
+    flex-wrap: wrap;
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
@@ -15,10 +23,13 @@
 }
 
 .second {
+    width:auto;
+    height:auto;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 
 .image-section img {
     width: 100%;
@@ -28,6 +39,8 @@
 }
 
 .ratings-image {
+    width:auto;
+    height:auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -46,6 +59,8 @@
 }
 
 .title-section {
+    width:auto;
+    height:auto;
     margin-top: 0.5rem;
     font-size: 1.1rem;
     font-weight: 600;
@@ -58,6 +73,7 @@
 @media (max-width: 1024px) {
     .conr {
         max-width: 250px;
+        height:auto;
         padding: 0.8rem;
     }
 

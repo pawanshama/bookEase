@@ -1,53 +1,200 @@
-*{
-    padding:0;
-    margin:0;
-    height:100%;
+  * {
+    padding: 0;
+    margin: 0;
+    height: 100%;
     box-sizing: border-box;
     font-family: 'Times New Roman', Times, serif;
-}
-
-.fail{
-    width:100%;
-    height:100%;
-    display:flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.fail-f{
-    width:450px;
-    height:450px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 10px 10px 8px 2px #f3f1f1;
-    justify-content: center;
-    align-items:center;
-    background-color: #fff;
-    border-radius: 0.5rem;
-}
-.correct{
-    width:70px;
-    height:70px;
-    display: flex;
-    background-color: #fff;
-    animation:pulse 1.5s infinite;
-}
-
-.tickets-window-list{
-    width: 100px;
+  }
+  .container-c{
+    width:auto;
+    height:auto;
+    margin-top:2px;
+    padding: 1rem;
+  }
+  
+  .nav-section {
+    width:auto;
     height:auto;
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    color: black;
+    font-size: 1rem;
+    margin-top: 0.7rem;
+    padding: 0 2rem;
+    justify-content: space-between;
+  }
+  
+  .logo-section {
+    width:auto;
+    height:auto;
+    margin-left: 2rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: rgb(226, 165, 165);
+  }
+  
+  .location-section {
+    width:auto;
+    height:auto;
+    color: black;
+    font-size: 1.5rem;
+    margin-top: 0.2rem;
+    margin-left: 0.3rem;
+    cursor: pointer;
+  }
+  
+  .choose-location {
+    width:auto;
+    height:auto;
+    color: rgb(146, 131, 131);
+    font-size: 1rem;
+    margin-top: 0.2rem;
+    margin-left: 0.3rem;
+    cursor: pointer;
+  }
+  
+  .logout {
+    width:auto;
+    height:auto;
+    margin-top: 0.5rem;
+    margin-left: 3rem;
+    background-color: rgb(218, 222, 211);
+    color: black;
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  .container-f {
+    width: 90%;
+    max-width: 28rem;
+    height: 28rem;
+    display: flex;
     flex-direction: column;
     justify-content: center;
-}
-
-
-/* Animation Keyframes */
-@keyframes pulse {
+    align-items: center;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .correct {
+    width: 4.42rem;
+    height: 4.42rem;
+    display: flex;
+    background-color: #fff;
+    animation: pulse 1.5s infinite;
+    margin-bottom: 1rem;
+  }
+  
+  .tickets-window-list {
+    width: 100%;
+    max-width: 100px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  /* Animation */
+  @keyframes pulse {
     0%, 100% {
-      transform: scale(1);     /* original size */
+      transform: scale(1);
     }
     50% {
-      transform: scale(0.5);   /* increased size */
+      transform: scale(0.5);
     }
   }
+  
+  /* Responsive: Small Devices (Phones) */
+  @media screen and (max-width: 480px) {
+
+    .logo-section {
+      width:auto;
+    height:auto;
+    font-size: 1.2rem;
+    margin-left: 1rem;
+  }
+
+  .location-section,
+  .choose-location {
+      width:auto;
+    height:auto;
+    font-size: 1rem;
+  }
+
+  .logout {
+      width:auto;
+    height:auto;
+    font-size: 0.9rem;
+    padding: 0.5rem 0.7rem;
+    margin-left: 0;
+  }
+    .container-f {
+      padding: 1rem;
+      width: 95%;
+    }
+  
+    .correct {
+      width: 50px;
+      height: 50px;
+    }
+  
+    .tickets-window-list {
+      max-width: auto;
+    }
+  }
+  
+  /* Responsive: Medium Devices (Tablets) */
+  @media screen and (min-width: 481px) and (max-width: 768px) {
+    .nav-section {
+      width:auto;
+    height:auto;
+    padding: 1rem;
+  }
+
+  .logo-section {
+      width:auto;
+    height:auto;
+    font-size: 1.5rem;
+  }
+
+  .location-section,
+  .choose-location {
+      width:auto;
+    height:auto;
+    font-size: 1.2rem;
+  }
+
+  .logout {
+      width:auto;
+    height:auto;
+    font-size: 1rem;
+    padding: 0.6rem 0.8rem;
+  }
+    .container-f {
+      width: 80%;
+      padding: 1.5rem;
+    }
+  
+    .correct {
+      width: 60px;
+      height: 60px;
+    }
+  
+    .tickets-window-list {
+      max-width: auto;
+    }
+  }
+  
+  /* Responsive: Large Devices (Laptops & Desktops) */
+  /* @media screen and (min-width: 769px) {
+    .container-f {
+      width: 450px;
+      height:450px;
+    }
+  } */

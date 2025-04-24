@@ -1,12 +1,26 @@
-
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
 /* Base Styles - for desktops and laptops */
+
+.contain{
+    width:auto;
+    height:auto;
+}
+
 .SM_heading-movie {
     width: 100%;
+    height:auto;
     font-size: 22px;
     color: black;
 }
 
 .SM_main_container-movie {
+    width:auto;
+    height:auto;
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;

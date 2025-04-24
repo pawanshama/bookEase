@@ -7,6 +7,8 @@ font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
 /* ----- Base Styles ----- */
 .nav-section {
+width:auto;
+height:auto;
 display: flex;
 flex-direction: row;
 align-items: center;
@@ -18,6 +20,8 @@ padding: 0 1rem;
 }
 
 .logo-section {
+  width:auto;
+  height:auto;
 font-size: xx-large;
 font-weight: 600;
 color: rgb(226, 165, 165);
@@ -26,33 +30,47 @@ margin-right: 2rem;
 
 .location-section,
 .choose-location {
+  width:auto;
+  height:auto;
 color: black;
 margin-left: 0.3rem;
 cursor: pointer;
 }
 
 .location-section {
+  width:auto;
+  height:auto;
 font-size: xx-large;
 margin-top: 0.2rem;
 }
 
 .choose-location {
+  width:auto;
+  height:auto;
 font-size: large;
 margin-top: 0.2rem;
 color: rgb(146, 131, 131);
 }
 
-.seat-container { display: flex;  
+.seat-container { 
+    width:auto;
+    height:auto;
+    display: flex;  
     flex-direction: column; 
     align-items: center; 
     margin: 20px; 
 } 
 .row { 
+    width:auto;
+    height:auto;
     display: flex; 
     align-items: center; 
     margin: 5px 0; 
+    flex-wrap: nowrap;
 } 
 .row-label { 
+    width:auto;
+    height:auto;
     font-weight: bold; 
     font-size: 16px; 
     margin-right: 10px; 
@@ -76,6 +94,17 @@ color: rgb(146, 131, 131);
     cursor: pointer; 
     transition: 'background' 0.3s ease, transform 0.1s; 
 } 
+
+.seat-container{
+  width:auto;
+  height:auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .seat:hover { 
     background-color: #c3e6cb; 
 } 
@@ -90,6 +119,7 @@ color: rgb(146, 131, 131);
     cursor: not-allowed; 
 }
 .screen-panel {
+    height:auto;
     background: #ccc;
     padding: 10px 20px;
     border-radius: 10px;
@@ -104,22 +134,30 @@ color: rgb(146, 131, 131);
 
 @media (max-width: 1024px) {
   .nav-section {
+    width:auto;
+  height:auto;
     flex-direction: column;
     align-items: flex-start;
     padding: 1rem;
   }
 
   .logo-section {
+    width:auto;
+  height:auto;
     font-size: 1.5rem;
     margin-left: 0;
     margin-right: 0;
   }
 
   .location-section {
+    width:auto;
+  height:auto;
     font-size: 1.2rem;
   }
 
   .choose-location {
+    width:auto;
+  height:auto;
     font-size: 1rem;
   }
   .seat {
@@ -132,18 +170,41 @@ color: rgb(146, 131, 131);
     
   .screen-panel {
     width: 90%;
+    height:auto;
     font-size: 1rem;
   }
+  .row { 
+    width:auto;
+    height:auto;
+    display: flex; 
+    align-items: center; 
+    margin: 5px 0; 
+    flex-wrap: nowrap;
+  } 
+  .row-label { 
+      width:auto;
+      height:auto;
+      font-weight: bold; 
+      font-size: 16px; 
+      margin-right: 10px; 
+      width: 30px; 
+      text-align: right; 
+      background-color:#f0eaea;
+  } 
   }
   
   @media (max-width: 768px) {
     .nav-section {
+      width:auto;
+  height:auto;
       flex-wrap: wrap;
       justify-content: space-between;
       padding: 1rem 2rem;
     }
   
     .logo-section {
+      width:auto;
+  height:auto;
       font-size: 1.7rem;
       margin-right: 2rem;
     }
@@ -158,17 +219,42 @@ color: rgb(146, 131, 131);
     
     .screen-panel {
       width: 95%;
+      height:auto;
       font-size: 0.9rem;
     }
+    
+    .row { 
+      width:auto;
+      height:auto;
+      display: flex; 
+      align-items: center; 
+      margin: 5px 0; 
+      flex-wrap: nowrap;
+    } 
+   .row-label { 
+      width:auto;
+      height:auto;
+      font-weight: bold; 
+      font-size: 16px; 
+      margin-right: 10px; 
+      width: 30px; 
+      text-align: right; 
+      background-color:#f0eaea;
+    } 
+
   }
   
   @media (max-width: 480px) {
     .nav-section {
+      width:auto;
+      height:auto;
       justify-content: flex-start;
       padding: 1rem 3rem;
     }
   
     .logo-section {
+      width:auto;
+      height:auto;
       margin-left: 3rem;
       margin-right: 6rem;
     }
@@ -178,12 +264,32 @@ color: rgb(146, 131, 131);
       height: 25px;
       align-items: center;
       justify-content: center;
+      /* flex-wrap: nowrap; */
       font-size: 0.7rem;
     }
   
     .screen-panel {
       width: 100%;
+      height:auto;
       font-size: 0.8rem;
       padding: 8px;
     }
+    .row { 
+      width:auto;
+      height:auto;
+      display: flex; 
+      align-items: center; 
+      margin: 5px 0; 
+      flex-wrap: nowrap;
+    } 
+    .row-label { 
+        width:auto;
+        height:auto;
+        font-weight: bold; 
+        font-size: 16px; 
+        margin-right: 10px; 
+        width: 30px; 
+        text-align: right; 
+        background-color:#f0eaea;
+     } 
   }

@@ -10,6 +10,8 @@ const CardMovie = (props) => {
     const {setMovieName,token,setUrl,setMessage} = context
     const [urlt,setUrlt] = useState('');
     const navigate = useNavigate()
+
+    //handling page navigating to complete card page.
     const handleIndividualCard=()=>{
         setMovieName(title)
         setUrl(urlt)

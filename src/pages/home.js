@@ -2,14 +2,21 @@ import React, { useContext, useEffect, useState} from 'react'
 import Selectmovie from '../components/Selectmovie'
 import '../Css/Home.css'
 import BsCxt from '../context/Bscontext'
+import { useNavigate } from 'react-router-dom'
 
 
 const Home = () => {
   const context = useContext(BsCxt)
   const [a,setA] = useState('');
-  const {city,token,movieList,setMovieList,setMessage,
-    listMovieDown,setListMovieDown} = context
+  const {city,token,movieList,
+    listMovieDown} = context
+    const {setEmail,setToken,setCountry,setMovieName,setListMovieDown,
+      setAdminBigList,setIndex,setMessage,setCity,setState,setUrl,
+      setStateList,setCityList,setCompleteDataList,setMovieList,
+      setCompeletMovieDetails,setSelectedSeats,setLockedSeats} = context;
   const [t,setT] = useState(0);
+
+  const navigate = useNavigate()
 
   //function to call api to get data from backend
   const listMovieFunc = async()=>{
@@ -61,6 +68,29 @@ const Home = () => {
       setA(e.target.value)
   }
 
+  //funtion to logout from the app.
+  const routeToHome=()=>{
+    setEmail('');
+    setToken('');
+    setCountry('');
+    setMovieName('');
+    setListMovieDown(null); //this is used in home for storing movies coming from backend
+    setAdminBigList([]);
+    setIndex('');  //this is used 
+    setMessage('');
+    setCity('');
+    setState('');
+    setUrl('');
+    setStateList('');
+    setCityList('');
+    setCompleteDataList(null);
+    setMovieList(null);
+    setCompeletMovieDetails('');
+    setSelectedSeats([]);
+    setLockedSeats({});
+    navigate('/bookedSeats');
+  }
+
   return (
     <>
        <div className='nav-section'>
@@ -68,6 +98,7 @@ const Home = () => {
          <input placeholder='search movie.... ' value={a} onChange={handleMovieContent}/>
          <div className='location-section'>{city}</div>
          <div className='choose-location'>🛖</div>
+         <div className='logout' onClick={routeToHome}>Logout</div>
        </div>
     <div className='container'>
       { movieList?

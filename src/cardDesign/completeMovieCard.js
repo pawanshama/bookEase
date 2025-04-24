@@ -11,7 +11,10 @@ const CompleteMovieCard = (props) => {
   const [filteredData,setFilteredData] = useState('');
   const [renderFunction,setRenderFunction] = useState(0);
   const {movieList,city,movieName,url,token,setCompleteDataList,setMessage} = context;
-  
+  const {setEmail,setToken,setCountry,setMovieName,setListMovieDown,completeDataList,
+    setAdminBigList,setIndex,setCity,setState,setUrl,
+    setStateList,setCityList,setMovieList,
+    setCompeletMovieDetails,setSelectedSeats,setLockedSeats} = context;
  
   useEffect(()=>{
     if(filteredData.length===0 && movieList!==null){
@@ -33,12 +36,40 @@ const CompleteMovieCard = (props) => {
         }
       })
       const response = await data.json();
+      // console.log(response.data);
       setCompleteDataList(response.data)
     }catch(err){
       setMessage("error occured while movie selection")
       console.log("error occured",err)
     }
     navigate('/home/booking')
+  }
+
+  // useEffect(()=>{
+  //    console.log(completeDataList);
+  // },[completeDataList])
+
+  //navigate the page to home.
+  const routeToHome=()=>{
+    setEmail('');
+    setToken('');
+    setCountry('');
+    setMovieName('');
+    setListMovieDown(null); //this is used in home for storing movies coming from backend
+    setAdminBigList([]);
+    setIndex('');  //this is used 
+    setMessage('');
+    setCity('');
+    setState('');
+    setUrl('');
+    setStateList('');
+    setCityList('');
+    setCompleteDataList(null);
+    setMovieList(null);
+    setCompeletMovieDetails('');
+    setSelectedSeats([]);
+    setLockedSeats({});
+    navigate('/home',{replace:true})
   }
 
   return (
@@ -48,6 +79,7 @@ const CompleteMovieCard = (props) => {
             <div>{filteredData?.movieName}</div>
             <div className='location-section'>{city}</div>
             <div className='choose-location'>🛖</div>
+            <div className='logout' onClick={routeToHome}>Logout</div>
          </div>
        <br/>
          <div className='main-movie'>

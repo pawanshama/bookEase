@@ -51,7 +51,8 @@ const BlockCard = (props) => {
 
   return (
     <>
-        <div style={{width:'80%',height:'3rem',marginLeft:'3rem',color:'black',display:'flex',flexDirection:'row',backgroundColor:'#fff',borderRadius:'12px',marginBottom:'1rem'}}>
+        <div style={{width:'80%',height:'3rem',marginLeft:'3rem',color:'black',display:'flex',
+          flexDirection:'row',backgroundColor:'#fff',borderRadius:'12px',marginBottom:'1rem'}}>
             <div className='responsive-box'>{name}</div>
             <div style={{width:'2rem',height:'2rem',display:'flex',
               flexDirection:'column',marginLeft:'3rem',
